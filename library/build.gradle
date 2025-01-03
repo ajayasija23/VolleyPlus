@@ -25,13 +25,13 @@ dependencies {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
-            groupId = "com.github.ajayasija23"
-            artifactId = "photopicker"
-            version = "1.0.7"
+        release(MavenPublication) {
+            groupId = 'com.github.ajayasija23'
+            artifactId = 'volleyPlus'
+            version = '1.2'
 
             afterEvaluate {
-                from(components["release"])
+                from components.release
             }
         }
     }
