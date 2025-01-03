@@ -23,6 +23,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.ajayasija23"
+            artifactId = "photopicker"
+            version = "1.0.7"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -49,6 +63,10 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     task androidJavadocs(type: Javadoc) {
         source = android.sourceSets.main.java.srcDirs
